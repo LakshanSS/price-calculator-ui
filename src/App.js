@@ -1,23 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Button from "@material-ui/core/Button";
+import {ProductAPI} from "./apis/ProductAPI";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Project under development
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  handleCalculateClicked() {
+    ProductAPI.getResult()
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+
+  }
+
+  render() {
+    return(
+        <div>Hi
+          <Button onClick={() => {this.handleCalculateClicked()}}>Calculate</Button>
+        </div>
+
+    );
+  }
 }
 
 export default App;
