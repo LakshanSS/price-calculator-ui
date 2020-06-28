@@ -10,7 +10,13 @@ export class ProductAPI {
         return httpClient;
     };
 
-    static getResult() {
-        return ProductAPI.getHTTPClient().get('/calculatePrice?id=1&quantity=60' );
+    static getPrice(id, singleUnits, cartons, isTable) {
+        return ProductAPI.getHTTPClient().get('/calculatePrice?id=' + id + '&singleUnits=' + singleUnits + '&cartons='
+        + cartons + '&isTable=' + isTable);
     }
+
+    static getItems() {
+        return ProductAPI.getHTTPClient().get('/items');
+    }
+
 }
